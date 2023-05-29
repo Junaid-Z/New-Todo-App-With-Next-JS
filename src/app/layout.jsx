@@ -1,5 +1,7 @@
 import './globals.css'
 import { Roboto } from 'next/font/google';
+import appStore from '@/redux/store'
+import { Provider } from 'react-redux'
 
 const roboto = Roboto({
   weight: ['400', '700'],
@@ -13,10 +15,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={roboto.className}>
-        {children}
-      </body>
-    </html>
+    <Provider store={appStore}>
+      <html lang="en">
+        <body className={roboto.className}>
+          {children}
+        </body>
+      </html>
+    </Provider>
   )
 }
