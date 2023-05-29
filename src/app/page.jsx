@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import Head from 'next/head'
 import { Mukta } from 'next/font/google'
 import { Roboto } from 'next/font/google';
 import { useState } from 'react'
@@ -31,9 +30,6 @@ const Page = () => {
     const dispatch = useDispatch();
     let [input, setInput] = useState({ confirmed: true, data: '', newData: '' });
     return <div className={styles.container}>
-        <Head>
-            <title>TODO APP</title>
-        </Head>
         <div className={styles.inputSideBar}>
             <div className={styles.addTab}>
                 <TextField
