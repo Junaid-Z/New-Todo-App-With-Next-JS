@@ -10,7 +10,7 @@ import { add } from '@/redux/actions'
 import { Button, TextField } from '@mui/material'
 import TodoItem from '@/components/TodoItem'
 import styles from '@/style/TodoPage.module.css'
-import ClearQueue from '@/components/clearQueue'
+import ClearQueue from '@/components/ClearQueue'
 
 
 const roboto = Roboto({
