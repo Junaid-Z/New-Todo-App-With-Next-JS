@@ -9,20 +9,22 @@ function TodosList() {
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
       <AnimatePresence>
-        {todos.map((todo, i) => {
+        {todos.map((todo) => {
           return (
             <motion.div
               key={todo.id}
+              variants={collapseVariants}
               animate={"enter"}
               initial={"initial"}
-              variants={variants}
               exit={"exit"}
               transition={{
-                duration: 0.6,
+                duration: 0.3,
                 ease: [0, 1.2, 1, 1],
               }}
             >
-              <Todo todo={todo} />
+              <motion.div variants={transformVariants}>
+                <Todo todo={todo} />
+              </motion.div>
             </motion.div>
           );
         })}
@@ -32,7 +34,8 @@ function TodosList() {
 }
 
 export default TodosList;
-const variants: Variants = {
+
+const transformVariants: Variants = {
   enter: {
     opacity: 1,
     transform: "TranslateX(0)",
@@ -44,5 +47,16 @@ const variants: Variants = {
   initial: {
     opacity: 0,
     transform: "TranslateX(50%)",
+  },
+};
+
+const collapseVariants: Variants = {
+  exit: {
+    opacity: 0,
+    height: 0,
+    transition: {
+      duration: 0.2,
+      delay: 0.4,
+    },
   },
 };

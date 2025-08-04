@@ -41,7 +41,7 @@ function EditTodo({ todo, onCancel, onConfirm }: Props) {
         label={"Data"}
         placeholder="new data"
         onKeyDown={(e) => {
-          if (e.key == "enter") onSumbit(e);
+          if (e.key == "Enter") onSumbit(e);
         }}
       />
       <Box flexShrink={0} display={"flex"} alignItems={"center"}>
