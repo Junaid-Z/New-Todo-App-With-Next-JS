@@ -21,7 +21,6 @@ function TodosList() {
                 duration: 0.6,
                 ease: [0, 1.2, 1, 1],
               }}
-              style={{ overflow: "hidden" }}
             >
               <Todo todo={todo} />
             </motion.div>
@@ -41,7 +40,6 @@ const variants: Variants = {
   exit: {
     opacity: 0,
     transform: "TranslateX(-50%)",
-    height: 0,
   },
   initial: {
     opacity: 0,
