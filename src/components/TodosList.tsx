@@ -17,14 +17,19 @@ function TodosList() {
               animate={"enter"}
               initial={"initial"}
               exit={"exit"}
-              transition={{
-                duration: 0.3,
-                ease: [0, 1.2, 1, 1],
-              }}
+              style={{ overflow: "hidden" }}
             >
-              <motion.div variants={transformVariants}>
-                <Todo todo={todo} />
-              </motion.div>
+              <Box sx={{ p: 2 }}>
+                <motion.div
+                  variants={transformVariants}
+                  transition={{
+                    duration: 0.5,
+                    ease: [0, 1.2, 1, 1],
+                  }}
+                >
+                  <Todo todo={todo} />
+                </motion.div>
+              </Box>
             </motion.div>
           );
         })}
@@ -55,8 +60,9 @@ const collapseVariants: Variants = {
     opacity: 0,
     height: 0,
     transition: {
-      duration: 0.2,
-      delay: 0.4,
+      duration: 0.4,
+      delay: 0.5,
+      ease: [0, 1.2, 1, 1],
     },
   },
 };

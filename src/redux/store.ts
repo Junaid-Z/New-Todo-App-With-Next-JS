@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import todoSlice from "./actions";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +10,6 @@ const store = configureStore({
 
 export default store;
 
-export const useStore: TypedUseSelectorHook<ReturnType<typeof store.getState>> =
-  useSelector;
-export const useStoreDispatch: () => typeof store.dispatch = useDispatch;
+export const useStore =
+  useSelector.withTypes<ReturnType<typeof store.getState>>();
+export const useStoreDispatch = useDispatch.withTypes<typeof store.dispatch>();

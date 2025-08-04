@@ -33,7 +33,19 @@ function EditTodo({ todo, onCancel, onConfirm }: Props) {
     onConfirm?.(e!);
   });
   return (
-    <Box display={"flex"} alignItems={"center"} gap={2}>
+    <Box
+      display={"grid"}
+      gap={2}
+      gridTemplateColumns={{
+        xs: "1fr",
+        md: "1fr min-content",
+      }}
+      gridTemplateRows={{
+        xs: "repeat(2, min-content)",
+        md: "min-content",
+      }}
+      alignItems={"center"}
+    >
       <TextField
         fullWidth
         {...register("data")}
@@ -44,17 +56,20 @@ function EditTodo({ todo, onCancel, onConfirm }: Props) {
           if (e.key == "Enter") onSumbit(e);
         }}
       />
-      <Box flexShrink={0} display={"flex"} alignItems={"center"}>
+      <Box
+        aria-label="options"
+        display={"grid"}
+        gridTemplateColumns="repeat(2, 1fr)"
+        columnGap={2}
+      >
         <Button
           onClick={onCancel}
           size="large"
           variant="outlined"
-          color="error"
+          color="secondary"
         >
           <Block />
         </Button>
-      </Box>
-      <Box flexShrink={0} display={"flex"} alignItems={"center"}>
         <Button
           size="large"
           onClick={onSumbit}

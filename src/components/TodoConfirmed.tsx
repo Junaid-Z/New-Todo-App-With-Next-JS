@@ -2,9 +2,11 @@
 import { edit, remove, Todo } from "@/redux/actions";
 import Delete from "@mui/icons-material/Delete";
 import Edit from "@mui/icons-material/Edit";
+import { Chip } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import CheckBox from "@mui/material/Checkbox";
+import Check from "@mui/icons-material/Check";
+import Clear from "@mui/icons-material/Clear";
 import Typography from "@mui/material/Typography";
 import { useDispatch } from "react-redux";
 
@@ -16,29 +18,88 @@ type Props = {
 function TodoConfirmed({ todo, onEdit }: Props) {
   const dispatch = useDispatch();
   return (
-    <Box display={"flex"} alignItems={"center"} gap={2}>
-      <CheckBox
-        size="large"
-        color="success"
-        checked={todo.done}
-        onChange={(e) => {
-          dispatch(edit({ ...todo, done: e.target.checked }));
+    <Box
+      display={"grid"}
+      gridTemplateColumns={{
+        md: "min-content 1fr min-content",
+        xs: "min-content 1fr",
+      }}
+      gridTemplateRows={{
+        md: "1fr",
+        xs: "min-content min-content",
+      }}
+      alignItems={"center"}
+      gap={2}
+    >
+      <Chip
+        variant="outlined"
+        onClick={() => {
+          dispatch(edit({ ...todo, done: !todo.done }));
         }}
+        size="medium"
+        label={
+          <Box
+            sx={{
+              display: "flex",
+              color: (theme) => {
+                return todo.done
+                  ? theme.palette.success.main
+                  : theme.palette.error.light;
+              },
+            }}
+          >
+            {todo.done ? (
+              <>
+                <Check />
+                <Typography>Done</Typography>
+              </>
+            ) : (
+              <>
+                <Clear />
+                <Typography>Pending</Typography>
+              </>
+            )}
+          </Box>
+        }
       />
-      <Typography flexGrow={1} textTransform={"capitalize"}>
+      <Typography
+        component={"span"}
+        textTransform={"capitalize"}
+        textOverflow={"ellipsis"}
+        overflow={"hidden"}
+      >
         {todo.data}
       </Typography>
-      <Button variant="contained" color="primary" size="large" onClick={onEdit}>
-        <Edit />
-      </Button>
-      <Button
-        variant="outlined"
-        color="error"
-        size="large"
-        onClick={() => dispatch(remove(todo.id))}
+      <Box
+        sx={{
+          gridColumnStart: { md: "unset", xs: 1 },
+          gridColumnEnd: { md: "unset", xs: 3 },
+        }}
+        aria-label="options"
+        display={"grid"}
+        gridTemplateColumns="repeat(2, 1fr)"
+        alignItems={"center"}
+        columnGap={2}
       >
-        <Delete />
-      </Button>
+        <Button
+          aria-label="edit"
+          variant="contained"
+          color="primary"
+          size="large"
+          onClick={onEdit}
+        >
+          <Edit />
+        </Button>
+        <Button
+          aria-label="delete"
+          variant="outlined"
+          color="secondary"
+          size={"large"}
+          onClick={() => dispatch(remove(todo.id))}
+        >
+          <Delete />
+        </Button>
+      </Box>
     </Box>
   );
 }

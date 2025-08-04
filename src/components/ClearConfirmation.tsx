@@ -37,7 +37,7 @@ function ClearConfirmation({ open, onClose }: Props) {
             <Button
               fullWidth
               variant="outlined"
-              color="error"
+              color="secondary"
               onClick={() => onClose?.()}
             >
               Cancel
@@ -47,7 +47,7 @@ function ClearConfirmation({ open, onClose }: Props) {
             <Button
               fullWidth
               variant="contained"
-              color="primary"
+              color="error"
               onClick={() => {
                 dispatch(clear());
                 onClose?.();
