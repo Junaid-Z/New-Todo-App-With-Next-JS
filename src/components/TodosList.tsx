@@ -1,8 +1,8 @@
 "use client";
 import { useStore } from "@/redux/store";
-import Todo from "./Todo";
-import { Box } from "@mui/material";
+import Box from "@mui/material/Box";
 import { AnimatePresence, motion, Variants } from "motion/react";
+import Todo from "./Todo";
 
 function TodosList() {
   const todos = useStore((store) => store.todos);

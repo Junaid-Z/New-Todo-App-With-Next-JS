@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from "react";
-import TodoConfirmed from "./TodoConfirmed";
-import EditTodo from "./EditTodo";
 import { Todo as ITodo } from "@/redux/actions";
-import { Paper } from "@mui/material";
+import Paper from "@mui/material/Paper";
+import React, { useState } from "react";
+import EditTodo from "./EditTodo";
+import TodoConfirmed from "./TodoConfirmed";
 
 type Props = {
   todo: ITodo;
