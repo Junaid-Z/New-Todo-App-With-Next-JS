@@ -1,16 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import { useStore } from "@/redux/store";
 import TodoConfirmed from "./TodoConfirmed";
 import EditTodo from "./EditTodo";
 import { Todo as ITodo } from "@/redux/actions";
 
-type Props={
-  todo:ITodo
-}
+type Props = {
+  todo: ITodo;
+};
 
-const Todo = ({ todo: { id } }:Props) => {
-  const todo = useStore(({ todos }) => todos.filter((t) => t.id == id)[0]);
+const Todo = ({ todo }: Props) => {
   const [isEditing, setIsEditing] = useState(false);
   if (isEditing) {
     return (
@@ -20,8 +18,14 @@ const Todo = ({ todo: { id } }:Props) => {
         onConfirm={() => setIsEditing(false)}
       />
     );
+  } else {
+    return (
+      <TodoConfirmed
+        todo={todo}
+        onEdit={() => setIsEditing(true)}
+      ></TodoConfirmed>
+    );
   }
-  return <TodoConfirmed todo={todo} onEdit={() => setIsEditing(true)} />;
 };
 
 export default React.memo(Todo);

@@ -22,6 +22,7 @@ const Page = () => {
             md: "calc(100% - 250px)",
           },
           p: 1,
+          overflowX: "hidden",
         }}
       >
         <Typography

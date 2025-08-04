@@ -16,6 +16,7 @@
     "@mui/material": "^7.2.0",
     "@mui/material-nextjs": "^7.2.0",
     "@reduxjs/toolkit": "^2.8.2",
+    "motion": "^12.23.12",
     "next": "^15.4.5",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
