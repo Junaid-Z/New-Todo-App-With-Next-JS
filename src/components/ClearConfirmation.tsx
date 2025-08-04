@@ -37,7 +37,7 @@ function ClearConfirmation({ open, onClose }: Props) {
             <Button
               fullWidth
               variant="outlined"
-              color="secondary"
+              color="inherit"
               onClick={() => onClose?.()}
             >
               Cancel

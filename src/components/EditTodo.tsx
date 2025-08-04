@@ -59,24 +59,29 @@ function EditTodo({ todo, onCancel, onConfirm }: Props) {
       <Box
         aria-label="options"
         display={"grid"}
-        gridTemplateColumns="repeat(2, 1fr)"
+        gridTemplateColumns={{
+          md: "repeat(2, min-content)",
+          xs: "repeat(2, 1fr)",
+        }}
         columnGap={2}
       >
         <Button
           onClick={onCancel}
           size="large"
           variant="outlined"
-          color="secondary"
+          color="inherit"
+          startIcon={<Block />}
         >
-          <Block />
+          Cancel
         </Button>
         <Button
           size="large"
           onClick={onSumbit}
           variant="contained"
           color="primary"
+          startIcon={<Check />}
         >
-          <Check />
+          Confirm
         </Button>
       </Box>
     </Box>

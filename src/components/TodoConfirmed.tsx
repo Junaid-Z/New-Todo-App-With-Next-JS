@@ -2,7 +2,7 @@
 import { edit, remove, Todo } from "@/redux/actions";
 import Delete from "@mui/icons-material/Delete";
 import Edit from "@mui/icons-material/Edit";
-import { Chip } from "@mui/material";
+import { Chip, IconButton } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Check from "@mui/icons-material/Check";
@@ -77,7 +77,10 @@ function TodoConfirmed({ todo, onEdit }: Props) {
         }}
         aria-label="options"
         display={"grid"}
-        gridTemplateColumns="repeat(2, 1fr)"
+        gridTemplateColumns={{
+          md: "repeat(2, min-content)",
+          xs: "repeat(2, 1fr)",
+        }}
         alignItems={"center"}
         columnGap={2}
       >
@@ -87,17 +90,19 @@ function TodoConfirmed({ todo, onEdit }: Props) {
           color="primary"
           size="large"
           onClick={onEdit}
+          startIcon={<Edit />}
         >
-          <Edit />
+          Edit
         </Button>
         <Button
           aria-label="delete"
           variant="outlined"
-          color="secondary"
+          color="error"
           size={"large"}
           onClick={() => dispatch(remove(todo.id))}
+          startIcon={<Delete />}
         >
-          <Delete />
+          Delete
         </Button>
       </Box>
     </Box>
